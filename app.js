@@ -32,8 +32,8 @@ Follow({db:vcapServices.cloudantNoSQLDB[0].credentials.url + '/' + process.env.d
     if (change.doc.message && !change.doc.insights) {
       // Messages are likely to be short, just repeat till we reach the bare minimum
       var analyzeText = '';
-      for (var i = 0; i < 10; i++) {
-        analyzeText += change.doc.message;
+      for (var i = 0; i < 50; i++) {
+        analyzeText += ' ' + change.doc.message;
       };
 
       // Process through Watson Personality Insights
@@ -57,6 +57,8 @@ Follow({db:vcapServices.cloudantNoSQLDB[0].credentials.url + '/' + process.env.d
     }
 
     // Visual Recognition
-
+    if (change.doc.message) {
+      console.log('Hello World!');
+    }
   }
 });
