@@ -6,7 +6,6 @@ if (!process.env.VCAP_SERVICES) {
 }
 
 var vcapServices = JSON.parse(process.env.VCAP_SERVICES);
-// console.log(vcapServices.cloudantNoSQLDB[0].credentials);
 
 // Requires
 var Cloudant = require('cloudant');
@@ -54,11 +53,6 @@ Follow({db:vcapServices.cloudantNoSQLDB[0].credentials.url + '/' + process.env.d
             });
           }
         });
-    }
-
-    // Visual Recognition
-    if (change.doc.message) {
-      console.log('Hello World!');
     }
   }
 });
